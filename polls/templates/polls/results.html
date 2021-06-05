@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Soyeon's vote</title>
+</head>
+<body bgcolor="pink">
+{% extends 'base.html' %}
+{% block title %}Soyeon's vote{% endblock %}
+{% block content %}
+<h1>{{ question.question_text }}</h1>
+
+<ul>
+    {% for choice in question.choice_set.all %}
+        <li>{{ choice.choice_text }} -- {{ choice.votes }} vote{{ choice.votes|pluralize }}</li>
+    {% endfor %}
+</ul>
+
+<a href="{% url 'polls:detail' question.id %}" title="one more time?"> <img src="https://t3.ftcdn.net/jpg/00/68/60/82/240_F_68608245_HBC4W6uGJzxqhk8rIyeNDDXPojHQpaTw.jpg" width="90" height="90"></a>
+<font size="7" face="바탕" color="navy" ><b>&nbsp&nbspOR&nbsp&nbsp</b></font>
+<a href="http://127.0.0.1:8000/polls/" title="Home"> <img src="https://www.flaticon.com/svg/static/icons/svg/609/609803.svg" width="90" height="90"></a>
+{% endblock %}
